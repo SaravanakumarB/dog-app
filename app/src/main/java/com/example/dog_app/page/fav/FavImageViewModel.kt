@@ -12,17 +12,18 @@ class FavImageViewModel @Inject constructor(
 ) : ObservableViewModel() {
 
     val showLoadingView = MutableLiveData<Boolean>(false)
-    val isFavoriteAvailable = MutableLiveData<Boolean>(false)
+    val isFavoriteBreedAvailable = MutableLiveData<Boolean>(false)
+    val isFavoriteDogAvailable = MutableLiveData<Boolean>(false)
 
     fun getFavoriteImages() : ArrayList<String> {
         val list = localPreferenceController.getFavoriteDog()
-        isFavoriteAvailable.postValue(list.isNotEmpty())
+        isFavoriteDogAvailable.postValue(list.isNotEmpty())
         return list
     }
 
     fun getFavoriteBreeds() : ArrayList<String> {
         val list = localPreferenceController.getFavoriteBreed()
-        isFavoriteAvailable.postValue(list.isNotEmpty())
+        isFavoriteBreedAvailable.postValue(list.isNotEmpty())
         return list
     }
 }

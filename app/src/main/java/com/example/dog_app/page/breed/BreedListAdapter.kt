@@ -10,7 +10,7 @@ import com.example.dog_app.databinding.AdapterBreedListBinding
 
 
 class BreedListAdapter (private val context: Context, private val isFavoriteFlow: Boolean = false,
-    private val favList: ArrayList<String>) :
+    private var favList: ArrayList<String>) :
     RecyclerView.Adapter<BreedListAdapter.TextViewHolder>() {
 
     private var list: MutableList<String> = ArrayList()
@@ -38,6 +38,10 @@ class BreedListAdapter (private val context: Context, private val isFavoriteFlow
     fun setBreedList(breedList: ArrayList<String>) {
         this.list = breedList
         notifyDataSetChanged()
+    }
+
+    fun setFavList(updatedList: ArrayList<String>) {
+        this.favList = updatedList
     }
 
     override fun getItemCount(): Int {

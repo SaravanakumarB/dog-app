@@ -11,7 +11,7 @@ import com.example.dog_app.databinding.AdapterImageBinding
 
 
 class ImageListAdapter (private val context: Context, private val isFavoriteFlow: Boolean = false,
-                        private val favList: ArrayList<String>) :
+                        private var favList: ArrayList<String>) :
     RecyclerView.Adapter<ImageListAdapter.ImageViewHolder>() {
 
     private var list: MutableList<String> = ArrayList()
@@ -39,6 +39,10 @@ class ImageListAdapter (private val context: Context, private val isFavoriteFlow
     fun setBreedList(breedList: ArrayList<String>) {
         this.list = breedList
         notifyDataSetChanged()
+    }
+
+    fun setFavList(updatedFavList: ArrayList<String>) {
+        this.favList = updatedFavList
     }
 
     override fun getItemCount(): Int {

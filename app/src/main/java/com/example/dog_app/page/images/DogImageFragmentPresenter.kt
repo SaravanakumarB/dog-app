@@ -86,6 +86,7 @@ class DogImageFragmentPresenter @Inject constructor(
                 setOnItemClickedListener { image, type, position, _ ->
                     if (type == "FAVORITE") {
                         viewModel.addToFavorite(image)
+                        imageListAdapter?.setFavList(localPreferenceController.getFavoriteDog())
                         imageListAdapter?.notifyItemChanged(position)
                     } else if (type == "DOWNLOAD") {
                         if(isFileAlreadyDownload(getFileName(image))) {

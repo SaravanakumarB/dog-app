@@ -63,6 +63,7 @@ class BreedsFragmentPresenter @Inject constructor(
                     )
                 } else if (type == "FAVORITE") {
                     viewModel.addToFavorite(breed)
+                    breedListAdapter?.setFavList(localPreferenceController.getFavoriteBreed())
                     breedListAdapter?.notifyItemChanged(position)
                 }
             }

@@ -132,6 +132,9 @@ class BreedsFragmentViewModel @Inject constructor(
             if(!list.contains(image)) {
                 list.add(image)
                 localPreferenceController.setFavoriteBreed(list)
+            } else {
+                list.remove(image)
+                localPreferenceController.setFavoriteBreed(list)
             }
         }
     }

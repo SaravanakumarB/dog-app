@@ -27,4 +27,5 @@
     <string name="favorite_dogs">Favorite Dogs</string>
     <string name="favorite_breeds">Favorite Breeds</string>
     <string name="welcome_to_your_favorite_app">Welcome to your favorite app</string>
+    <string name="no_item_found">No Item Found</string>
 </resources>

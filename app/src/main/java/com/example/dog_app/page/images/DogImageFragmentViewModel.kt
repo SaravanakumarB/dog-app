@@ -22,6 +22,9 @@ class DogImageFragmentViewModel @Inject constructor(
             if(!list.contains(image)) {
                 list.add(image)
                 localPreferenceController.setFavoriteDog(list)
+            } else {
+                list.remove(image)
+                localPreferenceController.setFavoriteDog(list)
             }
         }
     }
