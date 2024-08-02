@@ -8,12 +8,18 @@ import retrofit2.http.*
 
 // Main retrofit service calls
 interface IService {
-  @GET("breeds/list/all")
+  @GET(GET_ALL_BREED_URL)
   fun getAllDogList(): Single<GetAllDogMainResponse>
 
-  @GET("breed/{breed}/images")
+  @GET(GET_BREED_IMAGES)
   fun getBreedImages(@Path("breed") breed: String): Single<GetImagesResponse>
 
-  @GET("breeds/image/random")
+  @GET(GET_RANDOM_BREED_IMAGE)
   fun getRandomImage(): Single<GetRandomImageResponse>
+
+  companion object {
+    const val GET_ALL_BREED_URL = "breeds/list/all"
+    const val GET_BREED_IMAGES = "breed/{breed}/images"
+    const val GET_RANDOM_BREED_IMAGE = "breeds/image/random"
+  }
 }
