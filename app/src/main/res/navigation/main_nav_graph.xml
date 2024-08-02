@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.dog_app.page.splash.SplashFragment"
+        android:label="SplashFragment">
+
+        <action
+            android:id="@+id/action_splashFragment_to_breedListFragment"
+            app:destination="@id/breedListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/breedListFragment"
+        android:name="com.example.dog_app.page.breed.BreedsFragment"
+        android:label="BreedListFragment">
+
+        <action
+            android:id="@+id/action_breedListFragment_to_dogImagesFragment"
+            app:destination="@id/dogImagesFragment" />
+
+        <action
+            android:id="@+id/action_breedListFragment_to_favBreedFragment"
+            app:destination="@id/favBreedFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dogImagesFragment"
+        android:name="com.example.dog_app.page.images.DogImageFragment"
+        android:label="DogImagesFragment">
+
+        <argument
+            android:name="breed"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_dogImagesFragment_to_favImageFragment"
+            app:destination="@id/favImageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favImageFragment"
+        android:name="com.example.dog_app.page.fav.FavImageFragment"
+        android:label="FavImageFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/favBreedFragment"
+        android:name="com.example.dog_app.page.fav.FavBreedFragment"
+        android:label="FavBreedFragment">
+    </fragment>
+</navigation>

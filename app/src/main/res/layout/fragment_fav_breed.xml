@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.dog_app.page.fav.FavImageViewModel" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/screenBackground">
+
+            <include
+                android:id="@+id/header_layout"
+                layout="@layout/layout_header_view"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:isFavoriteNeeded="@{false}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_breeds"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_layout"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.showLoadingView?View.VISIBLE:View.GONE}"
+            tools:visibility="gone">
+
+            <include
+                layout="@layout/loading_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

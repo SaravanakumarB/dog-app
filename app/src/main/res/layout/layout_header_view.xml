@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isFavoriteNeeded"
+            type="boolean" />
+
+    </data>
+
+    <!--as per design height should be 64-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_toolbar">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dp_18">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:paddingVertical="@dimen/dp_16"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_left" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_back"
+                    android:paddingVertical="@dimen/dp_16"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@id/iv_search_icon"
+                    app:layout_constraintStart_toEndOf="@id/iv_back"
+                    app:layout_constraintTop_toTopOf="@id/iv_back"
+                    tools:text="Title" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_24"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_favourite_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/ic_search" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_favourite_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:visibility="@{isFavoriteNeeded?View.VISIBLE:View.GONE, default=gone}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tint="@color/red"
+                    app:srcCompat="@drawable/ic_favorite" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
