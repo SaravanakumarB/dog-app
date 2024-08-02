@@ -99,6 +99,8 @@ android {
             properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
             def BASE_SERVER_URL_KEY = "BASE_SERVER_URL_PRODUCTION"
+
+            buildConfigField('String', 'BASE_SERVER_URL', properties.getProperty(BASE_SERVER_URL_KEY))
         }
     }
 
@@ -113,6 +115,13 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -186,6 +195,21 @@ dependencies {
     )
 
     implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+    // Test
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-inline:4.8.0'
+    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0'
+    testImplementation 'com.squareup.assertj:assertj-android:1.2.0'
+    testImplementation 'androidx.annotation:annotation:1.5.0'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    testImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    testImplementation 'androidx.test:runner:1.6.1'
+    testImplementation 'androidx.test:rules:1.6.1'
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.0'
+    testImplementation 'org.robolectric:robolectric:4.0'
+
 
     api project(':data')
     implementation project(":domain")
